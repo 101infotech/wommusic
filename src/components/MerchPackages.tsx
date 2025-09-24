@@ -67,36 +67,32 @@ const MerchPackages = () => {
 
               <CardContent className="space-y-6">
                 {/* Quantity Options */}
-                <div className="space-y-4">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   {pkg.quantities.map((qty, qtyIndex) => (
                     <div 
                       key={qtyIndex}
                       className="p-4 rounded-lg bg-background/30 border border-border/30 hover:border-border/50 transition-colors"
                     >
-                      <div className="flex items-center justify-between mb-2">
-                        <div className="flex items-center gap-3">
-                          <Badge variant="secondary" className="bg-neon-cyan/20 text-neon-cyan">
-                            {qty.qty} units
-                          </Badge>
-                          {qtyIndex > 0 && (
-                            <div className="flex items-center gap-1 text-xs text-muted-foreground">
-                              <TrendingDown className="w-3 h-3" />
-                              {((pkg.quantities[0].pricePerUnit - qty.pricePerUnit) / pkg.quantities[0].pricePerUnit * 100).toFixed(0)}% savings
-                            </div>
-                          )}
-                        </div>
-                        <div className="text-right">
-                          <div className="text-2xl font-bold">${qty.price.toLocaleString()}</div>
-                          <div className="text-xs text-muted-foreground">${qty.pricePerUnit}/unit</div>
-                        </div>
+                      <div className="text-center mb-4">
+                        <Badge variant="secondary" className="bg-neon-cyan/20 text-neon-cyan mb-2">
+                          {qty.qty} units
+                        </Badge>
+                        {qtyIndex > 0 && (
+                          <div className="flex items-center justify-center gap-1 text-xs text-muted-foreground mb-2">
+                            <TrendingDown className="w-3 h-3" />
+                            {((pkg.quantities[0].pricePerUnit - qty.pricePerUnit) / pkg.quantities[0].pricePerUnit * 100).toFixed(0)}% savings
+                          </div>
+                        )}
+                        <div className="text-2xl font-bold">${qty.price.toLocaleString()}</div>
+                        <div className="text-xs text-muted-foreground">${qty.pricePerUnit}/unit</div>
                       </div>
                       
-                      <div className="flex items-center gap-3">
+                      <div className="space-y-3">
                         <Select
-                          value={selectedQuantities[pkg.id]?.toString() || ''}
+                          value={selectedQuantities[pkg.id] === qtyIndex ? qtyIndex.toString() : ''}
                           onValueChange={(value) => handleQuantityChange(pkg.id, parseInt(value))}
                         >
-                          <SelectTrigger className="w-32">
+                          <SelectTrigger className="w-full">
                             <SelectValue placeholder="Select" />
                           </SelectTrigger>
                           <SelectContent>
@@ -108,7 +104,7 @@ const MerchPackages = () => {
                         
                         <Button 
                           onClick={() => addMerchToCart(pkg, qtyIndex)}
-                          className="flex-1 bg-gradient-to-r from-neon-cyan to-neon-blue hover:from-neon-blue hover:to-neon-purple transition-all duration-300"
+                          className="w-full bg-gradient-to-r from-neon-cyan to-neon-blue hover:from-neon-blue hover:to-neon-purple transition-all duration-300"
                         >
                           Add to Plan
                         </Button>
