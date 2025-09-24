@@ -49,7 +49,7 @@ const MerchPackages = () => {
         </div>
 
         {/* Merch Packages */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {merchPackages.map((pkg, index) => (
             <Card 
               key={pkg.id}
