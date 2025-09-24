@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { Play, Volume2 } from 'lucide-react';
+import { Play, Volume2, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { sampleClients } from '@/content/packages';
 
 const Hero = () => {
@@ -64,13 +65,14 @@ const Hero = () => {
         {/* Primary CTAs */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16 animate-slide-in-left" style={{ animationDelay: '0.3s' }}>
           <Button 
+            asChild
             size="lg" 
             className="pill-button-secondary group min-w-[200px] h-14 text-lg font-semibold"
           >
-            Book a Call
-            <div className="ml-2 w-0 group-hover:w-4 transition-all duration-300 overflow-hidden">
-              →
-            </div>
+            <Link to="/booking">
+              Book a Call
+              <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
           </Button>
           
           <Button 

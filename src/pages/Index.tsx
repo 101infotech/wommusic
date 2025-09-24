@@ -1,14 +1,15 @@
-import Hero from '@/components/Hero';
-import ReleasePackages from '@/components/ReleasePackages';
-import AddOnPackages from '@/components/AddOnPackages';
-import WebsitePackages from '@/components/WebsitePackages';
-import MerchPackages from '@/components/MerchPackages';
-import BundleDiscounts from '@/components/BundleDiscounts';
-import CaseStudies from '@/components/CaseStudies';
-import ProcessTimeline from '@/components/ProcessTimeline';
-import FAQ from '@/components/FAQ';
-import ContactForm from '@/components/ContactForm';
-import PlanBuilderDrawer from '@/components/PlanBuilderDrawer';
+import Hero from "@/components/Hero";
+import ProblemSection from "@/components/ProblemSection";
+import ProcessTimeline from "@/components/ProcessTimeline";
+import CaseStudies from "@/components/CaseStudies";
+import ReleasePackages from "@/components/ReleasePackages";
+import AddOnPackages from "@/components/AddOnPackages";
+import WebsitePackages from "@/components/WebsitePackages";
+import MerchPackages from "@/components/MerchPackages";
+import BundleDiscounts from "@/components/BundleDiscounts";
+import FAQ from "@/components/FAQ";
+import ContactForm from "@/components/ContactForm";
+import PlanBuilderDrawer from "@/components/PlanBuilderDrawer";
 
 const Index = () => {
   return (
@@ -16,13 +17,16 @@ const Index = () => {
       {/* SEO Meta Tags would be handled by Helmet or similar */}
       <main>
         <Hero />
-        <ReleasePackages />
-        <AddOnPackages />
-        <WebsitePackages />
-        <MerchPackages />
-        <BundleDiscounts />
-        <CaseStudies />
+        <ProblemSection />
         <ProcessTimeline />
+        <CaseStudies />
+        <div id="packages">
+          <ReleasePackages />
+          <AddOnPackages />
+          <WebsitePackages />
+          <MerchPackages />
+          <BundleDiscounts />
+        </div>
         <FAQ />
         <ContactForm />
       </main>

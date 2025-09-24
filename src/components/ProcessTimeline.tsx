@@ -1,17 +1,17 @@
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Search, Target, Palette, Rocket, TrendingUp, Clock } from 'lucide-react';
+import { Music2, Headphones, Video, Radio, BarChart3, Clock } from 'lucide-react';
 import { processSteps } from '@/content/packages';
 
 const ProcessTimeline = () => {
   const getStepIcon = (iconName: string) => {
     switch (iconName) {
-      case 'Search': return Search;
-      case 'Target': return Target;
-      case 'Palette': return Palette;
-      case 'Rocket': return Rocket;
-      case 'TrendingUp': return TrendingUp;
-      default: return Search;
+      case 'Search': return Music2;
+      case 'Target': return Headphones;
+      case 'Palette': return Video;
+      case 'Rocket': return Radio;
+      case 'TrendingUp': return BarChart3;
+      default: return Music2;
     }
   };
 
@@ -111,24 +111,24 @@ const ProcessTimeline = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="text-center">
               <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-gradient-to-br from-neon-blue to-neon-purple p-3 flex items-center justify-center">
-                <Target className="w-6 h-6 text-white" />
+                <Headphones className="w-6 h-6 text-white" />
               </div>
-              <h4 className="font-semibold mb-2">Data-Driven Strategy</h4>
-              <p className="text-sm text-muted-foreground">Every decision backed by analytics and market research</p>
+              <h4 className="font-semibold mb-2">Music Industry Focus</h4>
+              <p className="text-sm text-muted-foreground">Specialized in music marketing with proven industry results</p>
             </div>
             <div className="text-center">
               <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-gradient-to-br from-neon-purple to-neon-pink p-3 flex items-center justify-center">
-                <Palette className="w-6 h-6 text-white" />
+                <Video className="w-6 h-6 text-white" />
               </div>
-              <h4 className="font-semibold mb-2">Creative Excellence</h4>
-              <p className="text-sm text-muted-foreground">Award-winning designers and video producers</p>
+              <h4 className="font-semibold mb-2">Visual Storytelling</h4>
+              <p className="text-sm text-muted-foreground">Professional video production and graphic design</p>
             </div>
             <div className="text-center">
               <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-gradient-to-br from-neon-pink to-neon-cyan p-3 flex items-center justify-center">
-                <TrendingUp className="w-6 h-6 text-white" />
+                <BarChart3 className="w-6 h-6 text-white" />
               </div>
-              <h4 className="font-semibold mb-2">Measurable Results</h4>
-              <p className="text-sm text-muted-foreground">Real-time tracking and optimization for maximum impact</p>
+              <h4 className="font-semibold mb-2">Data-Driven Growth</h4>
+              <p className="text-sm text-muted-foreground">Real-time analytics and optimization for maximum impact</p>
             </div>
           </div>
         </div>

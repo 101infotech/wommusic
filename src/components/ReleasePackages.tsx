@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Check, Star, Zap } from 'lucide-react';
+import { Music, Disc3, Album, Clapperboard, Zap, Check, Star, Plus } from 'lucide-react';
 import { releasePackages } from '@/content/packages';
 import { usePlanBuilder } from '@/hooks/use-plan-builder';
 
@@ -12,11 +12,11 @@ const ReleasePackages = () => {
 
   const getPackageIcon = (type: string) => {
     switch (type) {
-      case 'single': return '🎵';
-      case 'ep': return '💿';
-      case 'album': return '🎼';
-      case 'visual': return '🎬';
-      default: return '🎵';
+      case 'single': return Music;
+      case 'ep': return Disc3;
+      case 'album': return Album;
+      case 'visual': return Clapperboard;
+      default: return Music;
     }
   };
 
@@ -93,7 +93,9 @@ const ReleasePackages = () => {
                 
                 <CardHeader className="pb-4">
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="text-2xl">{getPackageIcon(pkg.type)}</div>
+                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-neon-blue to-neon-purple p-2 flex items-center justify-center">
+                      {React.createElement(getPackageIcon(pkg.type), { className: "w-4 h-4 text-white" })}
+                    </div>
                     <div>
                       <CardTitle className="text-xl">{pkg.name}</CardTitle>
                       {pkg.songCount && (
@@ -160,7 +162,9 @@ const ReleasePackages = () => {
                     >
                       <td className="p-6">
                         <div className="flex items-center gap-3">
-                          <span className="text-lg">{getPackageIcon(pkg.type)}</span>
+                          <div className="w-6 h-6 rounded-full bg-gradient-to-br from-neon-blue to-neon-purple p-1 flex items-center justify-center">
+                            {React.createElement(getPackageIcon(pkg.type), { className: "w-3 h-3 text-white" })}
+                          </div>
                           <div>
                             <div className="font-medium">{pkg.name}</div>
                             {pkg.featured && (

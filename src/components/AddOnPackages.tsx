@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
-import { Plus, Info, Target, Megaphone, Video, Share2 } from 'lucide-react';
+import { Lightbulb, Palette, Camera, Smartphone, Info, Target, Megaphone, Video, Share2, Plus } from 'lucide-react';
 import { addonPackages } from '@/content/packages';
 import { usePlanBuilder } from '@/hooks/use-plan-builder';
 
@@ -12,11 +12,11 @@ const AddOnPackages = () => {
   const { addItem } = usePlanBuilder();
 
   const categories = [
-    { id: 'all', name: 'All Add-Ons', icon: Plus, count: addonPackages.length },
-    { id: 'strategy', name: 'Strategy & Branding', icon: Target, count: 3 },
-    { id: 'marketing', name: 'Marketing Collateral', icon: Megaphone, count: 3 },
+    { id: 'all', name: 'All Add-Ons', icon: Lightbulb, count: addonPackages.length },
+    { id: 'strategy', name: 'Strategy & Branding', icon: Palette, count: 3 },
+    { id: 'marketing', name: 'Marketing Collateral', icon: Camera, count: 3 },
     { id: 'video', name: 'Video Enhancements', icon: Video, count: 3 },
-    { id: 'social', name: 'Social Add-Ons', icon: Share2, count: 3 }
+    { id: 'social', name: 'Social Add-Ons', icon: Smartphone, count: 3 }
   ];
 
   const getFilteredPackages = () => {
