@@ -1,12 +1,34 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import Hero from '@/components/Hero';
+import ReleasePackages from '@/components/ReleasePackages';
+import AddOnPackages from '@/components/AddOnPackages';
+import WebsitePackages from '@/components/WebsitePackages';
+import MerchPackages from '@/components/MerchPackages';
+import BundleDiscounts from '@/components/BundleDiscounts';
+import CaseStudies from '@/components/CaseStudies';
+import ProcessTimeline from '@/components/ProcessTimeline';
+import FAQ from '@/components/FAQ';
+import ContactForm from '@/components/ContactForm';
+import PlanBuilderDrawer from '@/components/PlanBuilderDrawer';
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-background">
+      {/* SEO Meta Tags would be handled by Helmet or similar */}
+      <main>
+        <Hero />
+        <ReleasePackages />
+        <AddOnPackages />
+        <WebsitePackages />
+        <MerchPackages />
+        <BundleDiscounts />
+        <CaseStudies />
+        <ProcessTimeline />
+        <FAQ />
+        <ContactForm />
+      </main>
+      
+      {/* Floating Plan Builder */}
+      <PlanBuilderDrawer />
     </div>
   );
 };
