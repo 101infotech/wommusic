@@ -33,7 +33,7 @@ const MerchPackages = () => {
 
   return (
     <section className="py-24 relative">
-      <div className="container mx-auto px-4">
+      <div className="w-full px-4 md:px-8 lg:px-12">
         {/* Section Header */}
         <div className="text-center mb-16 animate-fade-in">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-muted/50 backdrop-blur-sm border border-border/50 text-sm text-muted-foreground mb-6">
