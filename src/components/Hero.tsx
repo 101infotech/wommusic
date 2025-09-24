@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Play, Volume2, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -7,6 +7,7 @@ import { sampleClients } from '@/content/packages';
 const Hero = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const audioRef = useRef<HTMLAudioElement>(null);
 
   // Rotate background elements
   useEffect(() => {
@@ -86,8 +87,24 @@ const Hero = () => {
 
         {/* Audio Visual Trigger */}
         <div className="mb-16 animate-scale-in" style={{ animationDelay: '0.6s' }}>
+          <audio 
+            ref={audioRef} 
+            src="/sample-music.wav" 
+            onEnded={() => setIsPlaying(false)}
+            preload="auto"
+          />
           <button
-            onClick={() => setIsPlaying(!isPlaying)}
+            onClick={() => {
+              if (audioRef.current) {
+                if (isPlaying) {
+                  audioRef.current.pause();
+                  setIsPlaying(false);
+                } else {
+                  audioRef.current.play();
+                  setIsPlaying(true);
+                }
+              }
+            }}
             className="group relative w-24 h-24 mx-auto rounded-full bg-gradient-to-br from-neon-blue to-neon-purple p-0.5 hover:scale-110 transition-all duration-300"
           >
             <div className="w-full h-full bg-background rounded-full flex items-center justify-center">
