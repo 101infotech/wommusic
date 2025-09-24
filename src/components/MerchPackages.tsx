@@ -32,10 +32,10 @@ const MerchPackages = () => {
   };
 
   return (
-    <section className="py-24 relative">
-      <div className="w-full px-4 md:px-8 lg:px-12">
+    <section className="py-24 relative w-screen">
+      <div className="w-full">
         {/* Section Header */}
-        <div className="text-center mb-16 animate-fade-in">
+        <div className="text-center mb-16 animate-fade-in px-4">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-muted/50 backdrop-blur-sm border border-border/50 text-sm text-muted-foreground mb-6">
             <Shirt className="w-4 h-4" />
             Merchandise Packages
@@ -49,7 +49,7 @@ const MerchPackages = () => {
         </div>
 
         {/* Merch Packages */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 px-4 md:px-8 lg:px-12">
           {merchPackages.map((pkg, index) => (
             <Card 
               key={pkg.id}
