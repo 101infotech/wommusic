@@ -6,7 +6,7 @@ const ProblemSection = () => {
     {
       icon: Eye,
       title: "Lost in the Noise",
-      stat: "99%",
+      stat: "96%",
       description: "of music releases get less than 1,000 streams in their first month",
       gradient: "from-red-500/20 to-orange-500/20"
     },
@@ -45,8 +45,7 @@ const ProblemSection = () => {
             Great Music Isn't <span className="bg-gradient-to-r from-red-400 to-orange-400 bg-clip-text text-transparent">Enough</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            In today's oversaturated music industry, talent alone won't cut it. 
-            Without the right visual strategy, even the best songs get lost in the noise.
+            Your beats are ready for the world—but how do you fill dance floors in cities where nobody knows your name?
           </p>
         </div>
 

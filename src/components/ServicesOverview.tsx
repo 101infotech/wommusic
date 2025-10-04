@@ -11,9 +11,9 @@ import { Link } from 'react-router-dom';
 const ServicesOverview = () => {
   const serviceCategories = [
     {
-      title: 'Music Release',
+      title: 'Release Launches',
       icon: Music,
-      description: 'Complete packages for singles, EPs, and albums with professional marketing.',
+      description: 'Blow up your next single or EP with viral campaigns.',
       features: ['Custom Graphics', 'Video Content', 'Distribution', 'Marketing'],
       gradient: 'from-neon-blue/10 to-neon-purple/10',
       link: '/services#release'
@@ -27,9 +27,9 @@ const ServicesOverview = () => {
       link: '/services#digital'
     },
     {
-      title: 'Marketing Services',
+      title: 'Events & Marketing',
       icon: TrendingUp,
-      description: 'Strategic marketing to grow your audience and increase engagement.',
+      description: 'Fill your venue—no more empty guest lists.',
       features: ['Social Media', 'Playlist Promotion', 'Radio Outreach', 'Influencer Campaigns'],
       gradient: 'from-neon-orange/10 to-neon-pink/10',
       link: '/services#marketing'
@@ -83,7 +83,7 @@ const ServicesOverview = () => {
               Our Services
             </div>
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Everything You Need to <span className="gradient-text">Succeed</span>
+              Your Backstage Pass to <span className="gradient-text">Growth</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
               From music release to digital presence, we provide comprehensive services to help artists thrive.
@@ -175,7 +175,7 @@ const ServicesOverview = () => {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-20">
+      {/* <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
@@ -207,7 +207,7 @@ const ServicesOverview = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-neon-blue/10 to-neon-purple/10">

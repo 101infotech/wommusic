@@ -141,12 +141,12 @@ const Pricing = () => {
             </div>
           )}
 
-          <Button 
+          {/* <Button 
             className="w-full bg-gradient-to-r from-neon-blue to-neon-purple hover:from-neon-purple hover:to-neon-pink transition-all duration-300"
             onClick={() => addItem(pkg)}
           >
             Add to Plan
-          </Button>
+          </Button> */}
         </CardContent>
       </Card>
     );

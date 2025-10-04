@@ -15,14 +15,14 @@ const Index = () => {
         <Hero />
         <ProblemSection />
         <ProcessTimeline />
-        <CaseStudies />
+        {/* <CaseStudies /> */}
         <ServicesOverview />
         <FAQ />
         <ContactForm />
       </main>
       
       {/* Floating Plan Builder */}
-      <PlanBuilderDrawer />
+      {/* <PlanBuilderDrawer /> */}
     </div>
   );
 };

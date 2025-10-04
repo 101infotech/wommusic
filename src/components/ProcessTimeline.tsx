@@ -39,7 +39,7 @@ const ProcessTimeline = () => {
             From Vision to <span className="gradient-text">Viral</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Our proven 5-step process ensures your music gets the attention it deserves, from initial strategy to ongoing growth.
+            Our Formula for Festival-Ready Brands.
           </p>
         </div>
 

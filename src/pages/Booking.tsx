@@ -1,26 +1,41 @@
-import { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Badge } from '@/components/ui/badge';
-import { Music, Calendar, Phone, Mail, User, DollarSign, ArrowLeft, CheckCircle } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Badge } from "@/components/ui/badge";
+import {
+  Music,
+  Calendar,
+  Phone,
+  Mail,
+  User,
+  DollarSign,
+  ArrowLeft,
+  CheckCircle,
+} from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Booking = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    artistName: '',
-    socialLinks: '',
-    projectType: '',
-    budget: '',
-    timeline: '',
-    description: ''
+    name: "",
+    email: "",
+    phone: "",
+    artistName: "",
+    socialLinks: "",
+    projectType: "",
+    budget: "",
+    timeline: "",
+    description: "",
   });
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -32,7 +47,7 @@ const Booking = () => {
   };
 
   const handleInputChange = (field: string, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
+    setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
   if (isSubmitted) {
@@ -43,15 +58,18 @@ const Booking = () => {
             <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-gradient-to-br from-neon-blue to-neon-purple p-4 flex items-center justify-center">
               <CheckCircle className="w-8 h-8 text-white" />
             </div>
-            <h2 className="text-2xl font-bold mb-4">Booking Request Received!</h2>
+            <h2 className="text-2xl font-bold mb-4">
+              Booking Request Received!
+            </h2>
             <p className="text-muted-foreground mb-6">
-              We'll review your project details and get back to you within 24 hours with next steps.
+              We'll review your project details and get back to you within 24
+              hours with next steps.
             </p>
             <div className="space-y-4">
               <Button asChild className="w-full pill-button-secondary">
                 <Link to="/">Return Home</Link>
               </Button>
-              <a 
+              <a
                 href={`https://wa.me/1234567890?text=Hi! I just submitted a booking request for ${formData.artistName}. Looking forward to discussing our project!`}
                 className="block w-full"
               >
@@ -69,11 +87,11 @@ const Booking = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="sticky top-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-lg">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-2 text-xl font-bold">
-            <ArrowLeft className="w-5 h-5" />
-            WoM Holdings
+      <header className="fixed top-0 left-0 right-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-lg">
+        <div className="container mx-auto px-4 py-6 flex items-center justify-between">
+          <Link to="/" className="flex items-center gap-2 text-xl font-bold gradient-text">
+            <ArrowLeft className="w-5 h-5 " />
+            WomMusic X
           </Link>
           <Badge variant="outline" className="text-xs">
             <Music className="w-3 h-3 mr-1" />
@@ -90,10 +108,12 @@ const Booking = () => {
             Schedule Consultation
           </div>
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            Let's Create Your <span className="gradient-text">Visual Story</span>
+            Let's Create Your{" "}
+            <span className="gradient-text">Visual Story</span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Tell us about your project and we'll create a custom strategy to elevate your music.
+            Tell us about your project and we'll create a custom strategy to
+            elevate your music.
           </p>
         </div>
 
@@ -117,7 +137,9 @@ const Booking = () => {
                         id="name"
                         placeholder="Your full name"
                         value={formData.name}
-                        onChange={(e) => handleInputChange('name', e.target.value)}
+                        onChange={(e) =>
+                          handleInputChange("name", e.target.value)
+                        }
                         required
                       />
                     </div>
@@ -127,7 +149,9 @@ const Booking = () => {
                         id="artistName"
                         placeholder="Your stage name"
                         value={formData.artistName}
-                        onChange={(e) => handleInputChange('artistName', e.target.value)}
+                        onChange={(e) =>
+                          handleInputChange("artistName", e.target.value)
+                        }
                         required
                       />
                     </div>
@@ -141,7 +165,9 @@ const Booking = () => {
                         type="email"
                         placeholder="your.email@example.com"
                         value={formData.email}
-                        onChange={(e) => handleInputChange('email', e.target.value)}
+                        onChange={(e) =>
+                          handleInputChange("email", e.target.value)
+                        }
                         required
                       />
                     </div>
@@ -152,7 +178,9 @@ const Booking = () => {
                         type="tel"
                         placeholder="+1 (555) 123-4567"
                         value={formData.phone}
-                        onChange={(e) => handleInputChange('phone', e.target.value)}
+                        onChange={(e) =>
+                          handleInputChange("phone", e.target.value)
+                        }
                         required
                       />
                     </div>
@@ -165,7 +193,9 @@ const Booking = () => {
                       id="socialLinks"
                       placeholder="Instagram, Spotify, YouTube, etc."
                       value={formData.socialLinks}
-                      onChange={(e) => handleInputChange('socialLinks', e.target.value)}
+                      onChange={(e) =>
+                        handleInputChange("socialLinks", e.target.value)
+                      }
                       rows={3}
                     />
                   </div>
@@ -173,35 +203,53 @@ const Booking = () => {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="projectType">Project Type</Label>
-                      <Select onValueChange={(value) => handleInputChange('projectType', value)}>
+                      <Select
+                        onValueChange={(value) =>
+                          handleInputChange("projectType", value)
+                        }
+                      >
                         <SelectTrigger>
                           <SelectValue placeholder="Select project type" />
                         </SelectTrigger>
                         <SelectContent>
                           <SelectItem value="single">Single Release</SelectItem>
                           <SelectItem value="ep">EP (3-5 songs)</SelectItem>
-                          <SelectItem value="album">Album (6+ songs)</SelectItem>
+                          <SelectItem value="album">
+                            Album (6+ songs)
+                          </SelectItem>
                           <SelectItem value="visual">Stage Visuals</SelectItem>
-                          <SelectItem value="website">Artist Website</SelectItem>
+                          <SelectItem value="website">
+                            Artist Website
+                          </SelectItem>
                           <SelectItem value="merch">Merchandise</SelectItem>
-                          <SelectItem value="complete">Complete Campaign</SelectItem>
-                          <SelectItem value="consulting">Strategy Only</SelectItem>
+                          <SelectItem value="complete">
+                            Complete Campaign
+                          </SelectItem>
+                          <SelectItem value="consulting">
+                            Strategy Only
+                          </SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="budget">Budget Range</Label>
-                      <Select onValueChange={(value) => handleInputChange('budget', value)}>
+                      <Select
+                        onValueChange={(value) =>
+                          handleInputChange("budget", value)
+                        }
+                      >
                         <SelectTrigger>
                           <SelectValue placeholder="Select budget range" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="1k-3k">$1,000 - $3,000</SelectItem>
-                          <SelectItem value="3k-5k">$3,000 - $5,000</SelectItem>
-                          <SelectItem value="5k-10k">$5,000 - $10,000</SelectItem>
-                          <SelectItem value="10k-20k">$10,000 - $20,000</SelectItem>
-                          <SelectItem value="20k+">$20,000+</SelectItem>
-                          <SelectItem value="flexible">Flexible/Not Sure</SelectItem>
+                          <SelectItem value="1k-3k">$0 - $1,000</SelectItem>
+                          <SelectItem value="3k-5k">$1,000 - $3,000</SelectItem>
+                          <SelectItem value="5k-10k">
+                            $3,000 - $5,000
+                          </SelectItem>
+                          <SelectItem value="flexible">
+                            Flexible/Not Sure
+                          </SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
@@ -209,7 +257,11 @@ const Booking = () => {
 
                   <div className="space-y-2">
                     <Label htmlFor="timeline">Project Timeline</Label>
-                    <Select onValueChange={(value) => handleInputChange('timeline', value)}>
+                    <Select
+                      onValueChange={(value) =>
+                        handleInputChange("timeline", value)
+                      }
+                    >
                       <SelectTrigger>
                         <SelectValue placeholder="When do you need this completed?" />
                       </SelectTrigger>
@@ -218,7 +270,9 @@ const Booking = () => {
                         <SelectItem value="1-2weeks">1-2 weeks</SelectItem>
                         <SelectItem value="3-4weeks">3-4 weeks</SelectItem>
                         <SelectItem value="1-2months">1-2 months</SelectItem>
-                        <SelectItem value="flexible">Flexible timing</SelectItem>
+                        <SelectItem value="flexible">
+                          Flexible timing
+                        </SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
@@ -229,13 +283,18 @@ const Booking = () => {
                       id="description"
                       placeholder="Tell us about your vision, musical style, target audience, and any specific requirements..."
                       value={formData.description}
-                      onChange={(e) => handleInputChange('description', e.target.value)}
+                      onChange={(e) =>
+                        handleInputChange("description", e.target.value)
+                      }
                       rows={4}
                       required
                     />
                   </div>
 
-                  <Button type="submit" className="w-full pill-button-secondary h-12 text-lg">
+                  <Button
+                    type="submit"
+                    className="w-full pill-button-secondary h-12 text-lg"
+                  >
                     Submit Booking Request
                   </Button>
                 </form>
@@ -257,7 +316,9 @@ const Booking = () => {
                   </div>
                   <div>
                     <h4 className="font-medium">Initial Review</h4>
-                    <p className="text-sm text-muted-foreground">We review your project within 24 hours</p>
+                    <p className="text-sm text-muted-foreground">
+                      We review your project within 24 hours
+                    </p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
@@ -266,7 +327,9 @@ const Booking = () => {
                   </div>
                   <div>
                     <h4 className="font-medium">Strategy Call</h4>
-                    <p className="text-sm text-muted-foreground">30-minute consultation to discuss your vision</p>
+                    <p className="text-sm text-muted-foreground">
+                      30-minute consultation to discuss your vision
+                    </p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
@@ -275,7 +338,9 @@ const Booking = () => {
                   </div>
                   <div>
                     <h4 className="font-medium">Custom Proposal</h4>
-                    <p className="text-sm text-muted-foreground">Tailored package with timeline and pricing</p>
+                    <p className="text-sm text-muted-foreground">
+                      Tailored package with timeline and pricing
+                    </p>
                   </div>
                 </div>
               </CardContent>
@@ -287,22 +352,38 @@ const Booking = () => {
                 <CardTitle className="text-lg">Need to Talk First?</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                <div className="flex items-center gap-3">
+                <a
+                  href="tel:+16803024004"
+                  className="flex items-center gap-3 mb-2 cursor-pointer"
+                >
                   <Phone className="w-5 h-5 text-neon-blue" />
                   <div>
                     <p className="text-sm font-medium">Call us directly</p>
-                    <p className="text-sm text-muted-foreground">+1 (555) 123-4567</p>
+                    <p className="text-sm text-muted-foreground">
+                      +1 (680) 302-4004
+                    </p>
                   </div>
-                </div>
-                <div className="flex items-center gap-3">
+                </a>
+
+                <a
+                  href="mailto:info@womholdings.com"
+                  className="flex items-center gap-3 cursor-pointer"
+                >
                   <Mail className="w-5 h-5 text-neon-purple" />
                   <div>
                     <p className="text-sm font-medium">Email us</p>
-                    <p className="text-sm text-muted-foreground">hello@womholdings.com</p>
+                    <p className="text-sm text-muted-foreground">
+                      info@womholdings.com
+                    </p>
                   </div>
-                </div>
+                </a>
+
                 <Button variant="outline" className="w-full" asChild>
-                  <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer">
+                  <a
+                    href="https://wa.me/16803024004"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     Chat on WhatsApp
                   </a>
                 </Button>
@@ -319,7 +400,8 @@ const Booking = () => {
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground mb-4">
-                  All our packages have transparent, upfront pricing. No hidden fees.
+                  All our packages have transparent, upfront pricing. No hidden
+                  fees.
                 </p>
                 <Button variant="outline" size="sm" asChild className="w-full">
                   <Link to="/#packages">View All Packages</Link>

@@ -428,37 +428,37 @@ export interface ProcessStep {
 
 export const processSteps: ProcessStep[] = [
   {
-    id: 'discovery',
-    title: 'Discovery',
-    description: 'Understanding your vision, goals, and target audience',
+    id: 'vibe_check',
+    title: 'Vibe Check',
+    description: 'We get to know your sound, your crowd, and your goals',
     icon: 'Search',
     duration: '1-2 days'
   },
   {
-    id: 'strategy',
-    title: 'Brand & Strategy',
-    description: 'Developing your unique brand identity and release strategy',
+    id: 'brand',
+    title: 'Brand Drop',
+    description: 'Build a visual ID that’s as bold as your bassline',
     icon: 'Target',
-    duration: '3-5 days'
+    duration: '3-6 days'
   },
   {
     id: 'creative',
-    title: 'Creative Production',
-    description: 'Designing all visual assets and video content',
+    title: 'Content Creation',
+    description: 'Next-level visuals, teasers, and promo reels for every release or event',
     icon: 'Palette',
     duration: '7-14 days'
   },
   {
-    id: 'rollout',
-    title: 'Campaign Rollout',
-    description: 'Executing your release across all platforms',
+    id: 'launch',
+    title: 'Campaign Launch',
+    description: 'Targeted ads and influencer pushes that fill dance floors and playlists',
     icon: 'Rocket',
     duration: '2-4 weeks'
   },
   {
     id: 'growth',
-    title: 'Growth & Optimization',
-    description: 'Monitoring performance and optimizing for maximum impact',
+    title: 'Afterparty Analytics',
+    description: 'Real-time results, optimization, and ongoing support to keep your momentum going',
     icon: 'TrendingUp',
     duration: 'Ongoing'
   }

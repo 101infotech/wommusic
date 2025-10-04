@@ -55,14 +55,14 @@ const FAQ = () => {
             <p className="text-muted-foreground mb-6">
               Our team is here to help. Get personalized answers and discuss your specific needs.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            {/* <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button className="pill-button-primary">
                 Schedule Consultation
               </button>
               <button className="pill-button-secondary">
                 Live Chat Support
               </button>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
