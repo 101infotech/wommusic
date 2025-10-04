@@ -24,18 +24,18 @@ const Navigation = () => {
       <div className="lg:px-64 mx-auto ">
         <div className="flex items-center justify-between h-24">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2">
-            <div className="flex items-center ">
+          <Link to="/" className="flex items-center ">
+            <div className="flex items-center gap-4">
               <img
-                src={logo} // path to your logo
+                src={logo}
                 alt="WomMusic Logo"
-                className="w-28 h-28 rounded-lg object-cover"
+                className="w-28 h-28 rounded-lg object-contain pl-2"
               />
-              <span className="font-bold text-xl gradient-text">WomMusic X</span>
+              <span className="font-bold text-5xl gradient-text">X</span>
               <img
-                src={soulstice} // path to your logo
-                alt="WomMusic Logo"
-                className="pl-3 w-16 h-16 rounded-lg object-contain"
+                src={soulstice}
+                alt="Soulstice Logo"
+                className="w-32 h-32 rounded-lg object-contain"
               />
             </div>
           </Link>
@@ -77,36 +77,35 @@ const Navigation = () => {
         </div>
 
         {/* Mobile Navigation */}
-       {/* Mobile Navigation */}
-{isOpen && (
-  <div className="md:hidden py-4 border-t border-border/50">
-    <div className="flex flex-col gap-3">
-      {navItems.map((item) => {
-        const Icon = item.icon;
-        return (
-          <Button
-            key={item.href}
-            variant={isActive(item.href) ? "default" : "ghost"}
-            size="lg"
-            className={`w-full justify-start py-3 px-4 text-lg transition-all duration-200 ${
-              isActive(item.href)
-                ? "bg-gradient-to-r from-neon-blue to-neon-purple text-white"
-                : "hover:bg-muted"
-            }`}
-            asChild
-            onClick={() => setIsOpen(false)}
-          >
-            <Link to={item.href} className="flex items-center gap-3">
-              <Icon className="w-6 h-6" />
-              {item.name}
-            </Link>
-          </Button>
-        );
-      })}
-    </div>
-  </div>
-)}
-
+        {/* Mobile Navigation */}
+        {isOpen && (
+          <div className="md:hidden py-4 border-t border-border/50">
+            <div className="flex flex-col gap-3">
+              {navItems.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <Button
+                    key={item.href}
+                    variant={isActive(item.href) ? "default" : "ghost"}
+                    size="lg"
+                    className={`w-full justify-start py-3 px-4 text-lg transition-all duration-200 ${
+                      isActive(item.href)
+                        ? "bg-gradient-to-r from-neon-blue to-neon-purple text-white"
+                        : "hover:bg-muted"
+                    }`}
+                    asChild
+                    onClick={() => setIsOpen(false)}
+                  >
+                    <Link to={item.href} className="flex items-center gap-3">
+                      <Icon className="w-6 h-6" />
+                      {item.name}
+                    </Link>
+                  </Button>
+                );
+              })}
+            </div>
+          </div>
+        )}
       </div>
     </nav>
   );
