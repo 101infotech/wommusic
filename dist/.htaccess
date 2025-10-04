@@ -1,83 +1,49 @@
-# Handle client-side routing for React SPA# Handle client-side routing for React SPA
+# Handle client-side routing for React SPA
+RewriteEngine On
 
-RewriteEngine OnRewriteEngine On
+# Handle CORS and security headers
+Header always set X-Content-Type-Options nosniff
+Header always set X-Frame-Options DENY
+Header always set X-XSS-Protection "1; mode=block"
 
+# Set proper MIME types - CRITICAL for ES6 modules
+AddType application/javascript .js
+AddType application/javascript .mjs
+AddType text/css .css
+AddType image/svg+xml .svg
+AddType application/json .json
 
+# Force specific MIME type for JavaScript files to prevent octet-stream
+<Files "*.js">
+    ForceType application/javascript
+</Files>
 
-# Handle CORS and security headers# Handle CORS and security headers
+# Enable gzip compression
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/xml
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE application/xml
+    AddOutputFilterByType DEFLATE application/xhtml+xml
+    AddOutputFilterByType DEFLATE application/rss+xml
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/x-javascript
+</IfModule>
 
-Header always set X-Content-Type-Options nosniffHeader always set X-Content-Type-Options nosniff
+# Cache static assets
+<IfModule mod_expires.c>
+    ExpiresActive on
+    ExpiresByType text/css "access plus 1 year"
+    ExpiresByType application/javascript "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/jpg "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+</IfModule>
 
-Header always set X-Frame-Options DENYHeader always set X-Frame-Options DENY
-
-Header always set X-XSS-Protection "1; mode=block"Header always set X-XSS-Protection "1; mode=block"
-
-
-
-# Set proper MIME types# Set proper MIME types
-
-AddType application/javascript .jsAddType application/javascript .js
-
-AddType text/css .cssAddType text/css .css
-
-AddType image/svg+xml .svgAddType image/svg+xml .svg
-
-
-
-# Enable gzip compression# Enable gzip compression
-
-<IfModule mod_deflate.c><IfModule mod_deflate.c>
-
-    AddOutputFilterByType DEFLATE text/plain    AddOutputFilterByType DEFLATE text/plain
-
-    AddOutputFilterByType DEFLATE text/html    AddOutputFilterByType DEFLATE text/html
-
-    AddOutputFilterByType DEFLATE text/xml    AddOutputFilterByType DEFLATE text/xml
-
-    AddOutputFilterByType DEFLATE text/css    AddOutputFilterByType DEFLATE text/css
-
-    AddOutputFilterByType DEFLATE application/xml    AddOutputFilterByType DEFLATE application/xml
-
-    AddOutputFilterByType DEFLATE application/xhtml+xml    AddOutputFilterByType DEFLATE application/xhtml+xml
-
-    AddOutputFilterByType DEFLATE application/rss+xml    AddOutputFilterByType DEFLATE application/rss+xml
-
-    AddOutputFilterByType DEFLATE application/javascript    AddOutputFilterByType DEFLATE application/javascript
-
-    AddOutputFilterByType DEFLATE application/x-javascript    AddOutputFilterByType DEFLATE application/x-javascript
-
-</IfModule></IfModule>
-
-
-
-# Cache static assets# Cache static assets
-
-<IfModule mod_expires.c><IfModule mod_expires.c>
-
-    ExpiresActive on    ExpiresActive on
-
-    ExpiresByType text/css "access plus 1 year"    ExpiresByType text/css "access plus 1 year"
-
-    ExpiresByType application/javascript "access plus 1 year"    ExpiresByType application/javascript "access plus 1 year"
-
-    ExpiresByType image/png "access plus 1 year"    ExpiresByType image/png "access plus 1 year"
-
-    ExpiresByType image/jpg "access plus 1 year"    ExpiresByType image/jpg "access plus 1 year"
-
-    ExpiresByType image/jpeg "access plus 1 year"    ExpiresByType image/jpeg "access plus 1 year"
-
-    ExpiresByType image/gif "access plus 1 year"    ExpiresByType image/gif "access plus 1 year"
-
-    ExpiresByType image/svg+xml "access plus 1 year"    ExpiresByType image/svg+xml "access plus 1 year"
-
-</IfModule></IfModule>
-
-
-
-# Handle all routes to index.html for client-side routing# Handle all routes to index.html for client-side routing
-
-RewriteCond %{REQUEST_FILENAME} !-fRewriteCond %{REQUEST_FILENAME} !-f
-
-RewriteCond %{REQUEST_FILENAME} !-dRewriteCond %{REQUEST_FILENAME} !-d
-
-RewriteRule . /index.html [L]RewriteRule . /index.html [L]
+# Handle all routes to index.html for client-side routing
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.html [L]

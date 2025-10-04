@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Server Test</title>
+</head>
+<body>
+    <h1>Server Configuration Test</h1>
+    <p>If you can see this page, the basic server is working.</p>
+    <p>Check the browser console for any JavaScript loading errors.</p>
+    <script>
+        console.log('Basic JavaScript is working');
+        
+        // Test loading the main app JavaScript file
+        fetch('/assets/index-DnzyO_mM.js')
+            .then(response => {
+                console.log('JS file status:', response.status);
+                console.log('JS file content-type:', response.headers.get('content-type'));
+                if (response.headers.get('content-type').includes('application/javascript')) {
+                    console.log('✅ MIME type is correct!');
+                } else {
+                    console.error('❌ MIME type is wrong:', response.headers.get('content-type'));
+                }
+            })
+            .catch(error => console.error('Error loading JS file:', error));
+    </script>
+</body>
+</html>
