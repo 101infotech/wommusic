@@ -155,7 +155,7 @@ const ServicesOverview = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 bg-gradient-to-r from-neon-blue/5 to-neon-purple/5">
+      {/* <section className="py-16 bg-gradient-to-r from-neon-blue/5 to-neon-purple/5">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             {stats.map((stat, index) => {
@@ -172,7 +172,7 @@ const ServicesOverview = () => {
             })}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Testimonials Section */}
       {/* <section className="py-20">
