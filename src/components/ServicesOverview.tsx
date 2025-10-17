@@ -219,7 +219,7 @@ const ServicesOverview = () => {
             Let's discuss your project and create a custom plan that fits your vision and budget.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Button size="lg" asChild>
+            <Button size="lg" className='pill-button-primary' asChild>
               <Link to="/booking">Book Free Consultation</Link>
             </Button>
             <Button size="lg" variant="outline" asChild>

@@ -1,9 +1,10 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { HelpCircle } from 'lucide-react';
 import { faqs } from '@/content/packages';
-
+import { Link } from 'react-router-dom';
 const FAQ = () => {
   return (
+    <>
     <section className="py-24 relative">
       <div className="container mx-auto px-4">
         {/* Section Header */}
@@ -46,8 +47,12 @@ const FAQ = () => {
         </div>
 
         {/* Additional Support */}
-        <div className="mt-16 text-center animate-fade-in">
-          <div className="p-8 bg-gradient-to-br from-neon-blue/5 to-neon-purple/5 rounded-2xl border border-border/50 backdrop-blur-sm max-w-2xl mx-auto">
+        
+      </div>
+    </section>
+        <section className=" p-8 bg-gradient-to-br from-neon-blue/5 to-neon-purple/5 rounded-2xl border border-border/50 backdrop-blur-sm">
+           <div className="mt-16 text-center animate-fade-in">
+          <div className="  max-w-2xl mx-auto">
             <HelpCircle className="w-12 h-12 mx-auto mb-4 text-neon-blue" />
             <h3 className="text-2xl font-bold mb-4">
               Still Have Questions?
@@ -55,18 +60,16 @@ const FAQ = () => {
             <p className="text-muted-foreground mb-6">
               Our team is here to help. Get personalized answers and discuss your specific needs.
             </p>
-            {/* <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button className="pill-button-primary">
-                Schedule Consultation
+               <Link to='/booking'>Schedule Consultation</Link> 
               </button>
-              <button className="pill-button-secondary">
-                Live Chat Support
-              </button>
-            </div> */}
+              
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+          </section>
+    </>
   );
 };
 

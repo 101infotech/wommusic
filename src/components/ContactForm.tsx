@@ -55,19 +55,47 @@ const ContactForm = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
+    const formBody = new URLSearchParams({
+      name: formData.name || "",
+      email: formData.email || "",
+      phone: formData.phone || "",
+      artistName: formData.artistName || "",
+      socialLinks: formData.links || "", // matches your sheet column
+      projectType: "", // leave blank if not used in this form
+      budget: formData.budget || "",
+      timeline: "",
+      description: formData.message || "",
+    }).toString();
+
     try {
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+      await fetch(
+        "https://script.google.com/macros/s/AKfycby7MIh45_PBfhoTDAdTVlKzy1EtLwvyFTJU0wqOYfw9xIIRGlvCWCM-LADCGzvyWwKdbQ/exec",
+        {
+          method: "POST",
+          body: formBody,
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+          },
+        }
+      );
       setIsSubmitted(true);
       toast.success("Form submitted successfully! We'll be in touch soon.");
     } catch (error) {
+      console.error(error);
       toast.error("Something went wrong. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  const budgetRanges = ["$0 - $1K", "$1K - $3K", "$3K - $5K"];
+  const budgetRanges = [
+    "$0 - $1K",
+    "$1K - $3K",
+    "$3K - $5K",
+    "$5k-$10k",
+    "$10k-$15k",
+    "$15-$20k",
+  ];
 
   const packageTypes = [
     "Single Release",

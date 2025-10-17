@@ -1,20 +1,20 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Play, Volume2, ArrowRight } from "lucide-react";
+import { Play, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { sampleClients } from "@/content/packages";
+
 const Hero = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const audioRef = useRef<HTMLAudioElement>(null);
 
-  // Rotate background elements
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % 4);
     }, 3000);
     return () => clearInterval(interval);
   }, []);
+
   const backgroundElements = [
     {
       color: "from-neon-blue/20 to-neon-purple/20",
@@ -33,8 +33,9 @@ const Hero = () => {
       position: "bottom-1/4 right-1/3",
     },
   ];
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex flex-col justify-start overflow-hidden">
       {/* Animated Background */}
       <div className="absolute inset-0 -z-10">
         {backgroundElements.map((element, index) => (
@@ -47,17 +48,13 @@ const Hero = () => {
                 ? "opacity-100 scale-100"
                 : "opacity-40 scale-75"
             } animate-float`}
-            style={{
-              animationDelay: `${index * 1.5}s`,
-            }}
+            style={{ animationDelay: `${index * 1.5}s` }}
           />
         ))}
-
-        {/* Grid overlay */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:100px_100px]" />
       </div>
 
-      <div className="container mx-auto px-4 text-center relative z-10">
+      <div className="container mx-auto px-4 text-center relative z-10 pt-20 md:pt-28">
         {/* Main Headline */}
         <div className="space-y-8 mb-12 animate-fade-in">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-muted/50 backdrop-blur-sm border border-border/50 text-sm text-muted-foreground mb-6">
@@ -79,10 +76,8 @@ const Hero = () => {
 
         {/* Primary CTAs */}
         <div
-          className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16 animate-slide-in-left"
-          style={{
-            animationDelay: "0.3s",
-          }}
+          className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12 animate-slide-in-left"
+          style={{ animationDelay: "0.3s" }}
         >
           <Button
             asChild
@@ -95,58 +90,36 @@ const Hero = () => {
             </Link>
           </Button>
         </div>
+      </div>
 
-        {/* Audio Visual Trigger */}
-        {/* <div
-          className="mb-16 animate-scale-in"
-          style={{
-            animationDelay: "0.6s",
-          }}
-        >
-          <audio
-            ref={audioRef}
-            src="/sample-music.wav"
-            onEnded={() => setIsPlaying(false)}
-            preload="auto"
+      <div className="relative flex-1 flex items-center justify-center z-10" >
+        {isPlaying ? (
+          <video
+            src="/sample-video.mp4"
+            className="w-full h-full object-cover rounded-none"
+            autoPlay
+            controls
           />
-          <button
-            onClick={() => {
-              if (audioRef.current) {
-                if (isPlaying) {
-                  audioRef.current.pause();
-                  setIsPlaying(false);
-                } else {
-                  audioRef.current.play();
-                  setIsPlaying(true);
-                }
-              }
-            }}
-            className="group relative w-24 h-24 mx-auto rounded-full bg-gradient-to-br from-neon-blue to-neon-purple p-0.5 hover:scale-110 transition-all duration-300"
-          >
-            <div className="w-full h-full bg-background rounded-full flex items-center justify-center">
-              {isPlaying ? (
-                <Volume2 className="w-8 h-8 text-foreground group-hover:scale-110 transition-transform" />
-              ) : (
-                <Play className="w-8 h-8 text-foreground ml-1 group-hover:scale-110 transition-transform" />
-              )}
+        ) : (
+          <div className="flex flex-col items-center justify-center text-center">
+            <div className="flex flex-col items-center justify-center text-center">
+              <button
+                onClick={() => setIsPlaying(true)}
+                className="group relative w-24 h-24 rounded-full bg-gradient-to-br from-neon-blue to-neon-purple p-0.5 hover:scale-110 transition-all duration-300"
+              >
+                <div className="w-full h-full bg-background rounded-full flex items-center justify-center">
+                  <Play className="w-8 h-8 text-foreground ml-1 group-hover:scale-110 transition-transform" />
+                </div>
+              </button>
+              <p className="text-sm text-muted-foreground mt-4">
+                {isPlaying ? "Experience our work" : "Click to hear our work"}
+              </p>
             </div>
-
-            {/* Pulse animation when playing */}
-            {/* {isPlaying && (
-              <>
-                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-neon-blue to-neon-purple animate-ping opacity-20" />
-                <div className="absolute inset-2 rounded-full bg-gradient-to-br from-neon-blue to-neon-purple animate-pulse opacity-30" />
-              </>
-            )}
-          </button>
-          <p className="text-sm text-muted-foreground mt-4">
-            {isPlaying ? "Experience our work" : "Click to hear our work"}
-          </p>
-        </div> */} 
-
-        {/* Client Marquee */}
+          </div>
+        )}
       </div>
     </section>
   );
 };
+
 export default Hero;

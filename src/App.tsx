@@ -10,35 +10,46 @@ import Services from "./pages/Services";
 import NotFound from "./pages/NotFound";
 import FloatingConsultation from "./components/FloatingConsultation";
 import Navigation from "./components/Navigation";
+import { useGtag } from "@/hooks/useGtag";
+
 
 const queryClient = new QueryClient();
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        {/* Global Navigation */}
-        <Navigation />
-        
-        {/* Main Content with top padding to account for fixed nav */}
-        <div className="pt-16">
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/booking" element={<Booking />} />
-            <Route path="/pricing" element={<Pricing />} />
-            <Route path="/services" element={<Services />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </div>
-        
-        {/* Global Floating Consultation Button */}
-        <FloatingConsultation />
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+// App.tsx
+const App = () => {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Navigation />
+
+          {/* ✅ useGtag is now inside the Router */}
+          <GtagListener />
+
+          <div className="pt-16">
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/booking" element={<Booking />} />
+              <Route path="/pricing" element={<Pricing />} />
+              <Route path="/services" element={<Services />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </div>
+
+          <FloatingConsultation />
+        </BrowserRouter>
+      </TooltipProvider>
+    </QueryClientProvider>
+  );
+};
+
+// This small component lives inside BrowserRouter
+const GtagListener = () => {
+  useGtag();
+  return null;
+};
+
 
 export default App;

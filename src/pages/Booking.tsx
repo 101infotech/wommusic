@@ -4,6 +4,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import logo from "@/assets/womlogo.png";
+import soulstice from "@/assets/soulstic_crop.png";
 import {
   Select,
   SelectContent,
@@ -38,13 +40,26 @@ const Booking = () => {
     description: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitted(true);
-    }, 1000);
-  };
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+
+  const formBody = new URLSearchParams(formData as any).toString();
+
+  try {
+    await fetch("https://script.google.com/macros/s/AKfycby7MIh45_PBfhoTDAdTVlKzy1EtLwvyFTJU0wqOYfw9xIIRGlvCWCM-LADCGzvyWwKdbQ/exec", {
+      method: "POST",
+      body: formBody,
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+      },
+    });
+    setIsSubmitted(true);
+  } catch (err) {
+    console.error(err);
+    alert("Error submitting form. Please try again.");
+  }
+};
+
 
   const handleInputChange = (field: string, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
@@ -91,7 +106,19 @@ const Booking = () => {
         <div className="container mx-auto px-4 py-6 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2 text-xl font-bold gradient-text">
             <ArrowLeft className="w-5 h-5 " />
-            WomMusic X
+            <div className="flex items-center gap-4">
+              <img
+                src={logo}
+                alt="WomMusic Logo"
+                className="w-24 h-24 rounded-lg object-contain pl-2"
+              />
+              <span className="font-bold text-4xl gradient-text">X</span>
+              <img
+                src={soulstice}
+                alt="Soulstice Logo"
+                className="w-28 h-28 rounded-lg object-contain"
+              />
+            </div>
           </Link>
           <Badge variant="outline" className="text-xs">
             <Music className="w-3 h-3 mr-1" />
@@ -237,6 +264,7 @@ const Booking = () => {
                         onValueChange={(value) =>
                           handleInputChange("budget", value)
                         }
+                        // '$5k-$10k',"$10k-$15k","$15-$20k"
                       >
                         <SelectTrigger>
                           <SelectValue placeholder="Select budget range" />
@@ -246,6 +274,12 @@ const Booking = () => {
                           <SelectItem value="3k-5k">$1,000 - $3,000</SelectItem>
                           <SelectItem value="5k-10k">
                             $3,000 - $5,000
+                          </SelectItem>
+                          <SelectItem value="$10k-$15k">
+                            $10k-$15k
+                          </SelectItem>
+                          <SelectItem value="$15-$20k">
+                            $15-$20k
                           </SelectItem>
                           <SelectItem value="flexible">
                             Flexible/Not Sure
